@@ -779,7 +779,7 @@ team section style start
 img[src$='social (1).png'],
 img[src$='social (2).png'],
 img[src$='social (3).png'],
-img[src$='social (4).png'] {
+img[src$='Channel.png'] {
   width: 50px !important;
   height: 50px !important;
 }
