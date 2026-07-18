@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kexin (Abby) Xu — Marketing Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+:root {
+  --pg:    #EBF3FF;
+  --card:  #FFFFFF;
+  --navy:  #0C1A2E;
+  --ink:   #1E2D42;
+  --muted: #5A7087;
+  --accent:#1A8FD1;
+  --glow:  #38BDF8;
+  --tint:  #D6ECFF;
+  --rule:  rgba(26,143,209,.14);
+  --r-sm:10px; --r-md:16px; --r-lg:22px; --r-xl:32px;
+  --sh: 0 2px 16px rgba(12,26,46,.06),0 1px 4px rgba(12,26,46,.04);
+  --sh-h: 0 10px 36px rgba(12,26,46,.11),0 2px 8px rgba(12,26,46,.05);
+  --t: all .28s cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--pg);color:var(--ink);-webkit-font-smoothing:antialiased;min-height:100vh}
+a{color:inherit;text-decoration:none;transition:var(--t)}
+ul{list-style:none}
+
+/* ── SHELL ── */
+.shell{display:flex;min-height:100vh}
+
+/* ── LEFT RAIL ── */
+.rail{
+  position:fixed;top:0;left:0;width:66px;height:100vh;
+  background:var(--card);border-right:1px solid var(--rule);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;z-index:200;
+}
+.rail a{
+  width:40px;height:40px;display:flex;align-items:center;justify-content:center;
+  border-radius:var(--r-sm);color:var(--muted);font-size:15px;transition:var(--t);position:relative;
+}
+.rail a:hover,.rail a.active{background:var(--tint);color:var(--accent)}
+.rail a.active::before{
+  content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);
+  width:2px;height:18px;background:var(--accent);border-radius:0 2px 2px 0;
+}
+.tip{
+  position:absolute;left:54px;top:50%;transform:translateY(-50%);
+  background:var(--navy);color:#fff;font-size:10.5px;font-weight:500;
+  padding:3px 9px;border-radius:6px;white-space:nowrap;
+  opacity:0;pointer-events:none;transition:opacity .15s;
+}
+.rail a:hover .tip{opacity:1}
+
+/* ── CONTENT ── */
+.content{margin-left:66px;margin-right:272px;display:flex;justify-content:center;flex:1}
+.col{width:100%;max-width:720px;padding:0 2.5rem 8rem}
+
+/* ── RIGHT SIDEBAR ── */
+.sidebar{
+  position:fixed;right:0;top:0;width:272px;height:100vh;
+  background:var(--card);border-left:1px solid var(--rule);
+  display:flex;align-items:center;justify-content:center;overflow-y:auto;
+}
+.sb-inner{padding:2.25rem 1.75rem;text-align:center;width:100%}
+.avatar{
+  width:108px;height:108px;border-radius:50%;
+  background:linear-gradient(135deg,var(--tint),#bae6fd);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1.1rem;
+  box-shadow:0 0 0 5px rgba(56,189,248,.1),var(--sh);
+}
+.avatar i{font-size:2.1rem;color:var(--accent)}
+.sb-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.25rem;font-weight:500;color:var(--navy);margin-bottom:.3rem;line-height:1.2;
+}
+.sb-role{font-size:11px;color:var(--muted);letter-spacing:.07em;text-transform:uppercase;margin-bottom:1.6rem;line-height:1.5}
+.sb-btns{display:flex;flex-direction:column;gap:8px}
+.b-solid{
+  display:flex;align-items:center;justify-content:center;gap:7px;
+  padding:.58rem 1rem;background:var(--accent);color:#fff;
+  border-radius:var(--r-xl);font-size:12px;font-weight:600;transition:var(--t);
+}
+.b-solid:hover{background:#1479b8;transform:translateY(-1px);box-shadow:0 4px 14px rgba(26,143,209,.3);color:#fff}
+.b-ghost{
+  display:flex;align-items:center;justify-content:center;gap:7px;
+  padding:.58rem 1rem;background:transparent;color:var(--accent);
+  border:1.5px solid var(--tint);border-radius:var(--r-xl);font-size:12px;font-weight:500;transition:var(--t);
+}
+.b-ghost:hover{border-color:var(--glow);background:var(--tint)}
+.copyright{font-size:10px;color:var(--muted);margin-top:2rem;opacity:.5}
+
+/* ── DIVIDER ── */
+.rule{display:flex;align-items:center;gap:10px;margin:3rem 0 2.25rem}
+.rule::before{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--rule))}
+.rule::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--rule),transparent)}
+.rule-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;
+  box-shadow:0 0 0 4px rgba(26,143,209,.15),0 0 10px rgba(56,189,248,.35)}
+
+/* ── TYPE ── */
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:.65rem}
+.section-h{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;color:var(--navy);letter-spacing:-.015em;line-height:1.15;margin-bottom:1.25rem}
+.body{font-size:14.5px;line-height:1.82;color:var(--muted)}
+.body strong{color:var(--ink);font-weight:600}
+
+/* ══════════════════════════════════════════════
+   HERO — two-column split
+══════════════════════════════════════════════ */
+#home{
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding:4rem 0 2rem;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2rem;
+  align-items:start;
+  width:100%;
+}
+/* LEFT: identity + summary */
+.hero-left{}
+.hero-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.4rem,4vw,3.4rem);
+  font-weight:400;
+  color:var(--navy);
+  letter-spacing:-.025em;
+  line-height:1.05;
+  margin-bottom:.5rem;
+}
+.hero-name em{font-style:italic;color:var(--accent)}
+.hero-title-line{
+  display:flex;align-items:center;gap:.6rem;
+  font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:1.5rem;
+}
+.hero-title-line::after{content:'';flex:1;height:1px;background:var(--rule)}
+.hero-summary{
+  font-size:14px;line-height:1.85;color:var(--muted);
+  border-left:2px solid var(--tint);
+  padding-left:1rem;
+  margin-bottom:1.75rem;
+}
+.hero-summary strong{color:var(--ink);font-weight:600}
+
+
+/* RIGHT: project previews */
+.hero-right{display:flex;flex-direction:column;gap:.75rem}
+.hero-right-label{
+  font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:.25rem;
+}
+/* Motto hero card */
+.hcard-motto{
+  border-radius:var(--r-lg);
+  background:linear-gradient(145deg,#0C1A2E,#093356);
+  padding:1.4rem 1.5rem;
+  border:1px solid rgba(56,189,248,.14);
+  box-shadow:var(--sh);
+  transition:var(--t);
+  cursor:pointer;
+  position:relative;overflow:hidden;
+}
+.hcard-motto::before{
+  content:'';position:absolute;top:-40px;right:-40px;
+  width:140px;height:140px;border-radius:50%;
+  background:radial-gradient(circle,rgba(56,189,248,.1) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hcard-motto:hover{box-shadow:var(--sh-h);transform:translateY(-2px)}
+.hcard-live{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--glow);margin-bottom:.6rem;
+}
+.hcard-live-dot{width:5px;height:5px;border-radius:50%;background:var(--glow);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hcard-motto h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.25rem;font-weight:400;color:#fff;letter-spacing:-.01em;margin-bottom:.35rem;
+}
+.hcard-motto h3 em{color:var(--glow);font-style:italic}
+.hcard-motto p{font-size:11.5px;color:rgba(186,230,253,.7);line-height:1.6;margin-bottom:.85rem}
+.hcard-tags{display:flex;flex-wrap:wrap;gap:5px}
+.htag{
+  padding:2px 9px;font-size:10px;font-weight:500;
+  background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.15);
+  border-radius:var(--r-xl);color:#BAE6FD;
+}
+
+/* Smaller project cards row */
+.hcards-row{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.hcard-sm{
+  border-radius:var(--r-md);
+  background:var(--card);
+  border:1px solid var(--rule);
+  padding:1rem 1.1rem;
+  transition:var(--t);
+  cursor:pointer;
+}
+.hcard-sm:hover{border-color:rgba(56,189,248,.25);box-shadow:var(--sh);transform:translateY(-2px)}
+.hcard-sm-icon{
+  width:32px;height:32px;border-radius:8px;
+  background:var(--tint);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:.65rem;
+  font-size:14px;
+}
+.hcard-sm h4{font-size:12px;font-weight:600;color:var(--navy);margin-bottom:.2rem;font-family:'DM Sans',sans-serif}
+.hcard-sm p{font-size:11px;color:var(--muted);line-height:1.5}
+
+/* Scroll hint */
+.scroll-hint{
+  display:flex;align-items:center;gap:.5rem;
+  margin-top:2rem;
+  font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);opacity:.5;
+  animation:bob 2.5s ease-in-out infinite;
+}
+.scroll-hint i{color:var(--accent);font-size:12px}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+
+/* ══════════════════════════════════════════════
+   ABOUT / SKILLS
+══════════════════════════════════════════════ */
+#about{padding:1.5rem 0}
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-top:1.25rem}
+.skill-card{
+  background:var(--card);border:1px solid var(--rule);border-radius:var(--r-lg);
+  padding:1.3rem 1.4rem;transition:var(--t);
+}
+.skill-card:hover{border-color:rgba(56,189,248,.25);box-shadow:var(--sh-h);transform:translateY(-2px)}
+.skill-icon{
+  width:36px;height:36px;border-radius:8px;background:var(--tint);
+  display:flex;align-items:center;justify-content:center;margin-bottom:.85rem;
+}
+.skill-icon i{color:var(--accent);font-size:14px}
+.skill-card h4{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:.35rem;font-family:'DM Sans',sans-serif}
+.skill-card p{font-size:12px;color:var(--muted);line-height:1.65}
+
+/* ══════════════════════════════════════════════
+   MOTTO FULL CARD
+══════════════════════════════════════════════ */
+.motto-card{
+  position:relative;overflow:hidden;border-radius:var(--r-xl);
+  background:linear-gradient(145deg,#0C1A2E 0%,#0a2540 55%,#093356 100%);
+  padding:2.5rem;border:1px solid rgba(56,189,248,.12);
+  box-shadow:0 24px 60px rgba(12,26,46,.18),0 0 0 1px rgba(56,189,248,.06);
+}
+.motto-card::before{
+  content:'';position:absolute;top:-70px;right:-70px;width:260px;height:260px;border-radius:50%;
+  background:radial-gradient(circle,rgba(56,189,248,.1) 0%,transparent 65%);pointer-events:none;
+}
+.mbadge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:4px 11px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2);
+  border-radius:var(--r-xl);font-size:10px;font-weight:700;color:var(--glow);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.1rem;
+}
+.mbadge-dot{width:5px;height:5px;border-radius:50%;background:var(--glow);animation:pulse 2s ease-in-out infinite}
+.motto-card h3{
+  font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;color:#fff;
+  letter-spacing:-.02em;line-height:1.1;margin-bottom:.8rem;
+}
+.motto-card h3 span{color:var(--glow);font-style:italic}
+.motto-card>p{font-size:13px;color:rgba(203,213,225,.85);line-height:1.78;max-width:500px;margin-bottom:1.5rem}
+.motto-pills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.75rem}
+.mpill{
+  padding:3px 10px;background:rgba(186,230,253,.08);border:1px solid rgba(186,230,253,.14);
+  border-radius:var(--r-xl);font-size:11px;color:#BAE6FD;font-weight:500;
+}
+.motto-actions{display:flex;gap:.75rem;flex-wrap:wrap}
+.m-cta{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:.6rem 1.3rem;background:var(--glow);color:#0C1A2E;
+  border-radius:var(--r-xl);font-size:12.5px;font-weight:700;transition:var(--t);
+}
+.m-cta:hover{background:#7DD3FC;transform:translateY(-1px);box-shadow:0 6px 18px rgba(56,189,248,.3);color:#0C1A2E}
+.m-ghost{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:.6rem 1.3rem;background:transparent;color:rgba(255,255,255,.65);
+  border:1px solid rgba(255,255,255,.1);border-radius:var(--r-xl);font-size:12.5px;transition:var(--t);
+}
+.m-ghost:hover{border-color:rgba(255,255,255,.28);color:#fff}
+.motto-stats{
+  display:flex;gap:1.75rem;flex-wrap:wrap;
+  margin-top:1.75rem;padding-top:1.5rem;border-top:1px solid rgba(56,189,248,.08);
+}
+.ms{display:flex;flex-direction:column;gap:2px}
+.ms-l{font-size:10px;color:rgba(100,116,139,.7);text-transform:uppercase;letter-spacing:.08em}
+.ms-v{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:500;color:#fff}
+
+/* ══════════════════════════════════════════════
+   CASE STUDY CARDS
+══════════════════════════════════════════════ */
+.cs-grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-top:1.25rem}
+.cs-card{
+  display:block;color:inherit;
+  background:var(--card);border:1px solid var(--rule);border-radius:var(--r-lg);
+  overflow:hidden;transition:var(--t);cursor:pointer;
+}
+.cs-card:hover{border-color:rgba(56,189,248,.22);box-shadow:var(--sh-h);transform:translateY(-3px)}
+.cs-thumb{height:140px;display:flex;align-items:center;justify-content:center;font-size:2rem}
+.cs-body{padding:1rem 1.15rem 1.2rem}
+.cs-tag{
+  display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--accent);background:var(--tint);border-radius:var(--r-xl);padding:2px 8px;margin-bottom:.5rem;
+}
+.cs-title{font-size:13.5px;font-weight:600;color:var(--navy);line-height:1.4}
+.cs-date{font-size:10.5px;color:var(--muted);margin-top:.35rem}
+
+/* ══════════════════════════════════════════════
+   PORTFOLIO GRID
+══════════════════════════════════════════════ */
+.port-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:1.25rem}
+.port-item{
+  aspect-ratio:1;border-radius:var(--r-md);overflow:hidden;position:relative;
+  border:1px solid var(--rule);cursor:pointer;background:var(--card);
+}
+.port-thumb{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:1.7rem;transition:transform .4s ease}
+.port-item:hover .port-thumb{transform:scale(1.08)}
+.port-ov{
+  position:absolute;inset:0;background:linear-gradient(to top,rgba(12,26,46,.6),transparent);
+  opacity:0;transition:var(--t);display:flex;align-items:flex-end;padding:.75rem;
+}
+.port-item:hover .port-ov{opacity:1}
+.port-lb{font-size:11px;font-weight:600;color:#fff}
+
+/* ══════════════════════════════════════════════
+   TIMELINE
+══════════════════════════════════════════════ */
+.tl{position:relative;padding-left:1.4rem}
+.tl::before{
+  content:'';position:absolute;left:0;top:8px;bottom:8px;width:1.5px;
+  background:linear-gradient(to bottom,var(--tint),var(--rule),transparent);
+}
+.ti{position:relative;padding-bottom:2rem}
+.ti::before{
+  content:'';position:absolute;left:-1.4rem;top:7px;
+  width:10px;height:10px;border-radius:50%;
+  background:var(--card);border:2px solid var(--accent);
+  box-shadow:0 0 0 3px rgba(26,143,209,.12);transition:var(--t);
+}
+.ti:hover::before{background:var(--accent);box-shadow:0 0 0 4px rgba(26,143,209,.18)}
+.ti-meta{font-size:10.5px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.25rem}
+.ti-role{font-size:15px;font-weight:600;color:var(--navy);font-family:'DM Sans',sans-serif;margin-bottom:.65rem}
+.ti-bul{padding-left:0}
+.ti-bul li{
+  position:relative;padding-left:1rem;font-size:13px;color:var(--muted);
+  line-height:1.72;margin-bottom:.4rem;
+}
+.ti-bul li::before{content:'▸';position:absolute;left:0;color:var(--glow);font-size:9.5px;top:4px}
+
+/* tools */
+.tool-cloud{display:flex;flex-wrap:wrap;gap:7px;margin-top:.85rem}
+.tp{
+  padding:4px 12px;background:var(--card);border:1px solid var(--rule);
+  border-radius:var(--r-xl);font-size:12px;font-weight:500;color:var(--ink);transition:var(--t);
+}
+.tp:hover{border-color:var(--glow);color:var(--accent);background:var(--tint)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1280px){.sidebar{display:none}.content{margin-right:0}}
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .skills-grid,.cs-grid{grid-template-columns:1fr}
+  .port-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:640px){
+  .rail{display:none}.content{margin-left:0}.col{padding:0 1.1rem 5rem}
+  .hero-name{font-size:2.4rem}.motto-card{padding:1.6rem}
+  .hcards-row{grid-template-columns:1fr}
+}
+  </style>
+</head>
+<body>
+<div class="shell">
+
+<!-- LEFT RAIL -->
+<nav class="rail">
+  <a href="#home" class="active"><i class="fas fa-house"></i><span class="tip">Home</span></a>
+  <a href="#about"><i class="fas fa-user"></i><span class="tip">About</span></a>
+  <a href="#featured"><i class="fas fa-star"></i><span class="tip">Motto</span></a>
+  <a href="#casestudies"><i class="fas fa-book-open"></i><span class="tip">Case Studies</span></a>
+  <a href="#portfolio"><i class="fas fa-briefcase"></i><span class="tip">Portfolio</span></a>
+  <a href="#resume"><i class="fas fa-file-lines"></i><span class="tip">Resume</span></a>
+</nav>
+
+<!-- CONTENT -->
+<div class="content"><div class="col">
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section id="home">
+  <div class="hero-grid">
+
+    <!-- LEFT: Identity -->
+    <div class="hero-left">
+      <h1 class="hero-name">Kexin (Abby) Xu</h1>
+      <div class="hero-title-line">
+        <span>Marketing Strategist</span>
+      </div>
+      <p class="hero-summary">
+        Marketing specialist with <strong>1+ year of experience</strong> supporting brand marketing, product launches, and go-to-market campaigns across B2B and consumer brands. Experienced in using <strong>customer behavior, campaign performance, and market research</strong> to improve strategy and brand messaging. Comfortable working across departments — from planning through execution.
+      </p>
+      <div class="scroll-hint" style="margin-top:1.75rem">
+        <i class="fas fa-chevron-down"></i><span>scroll to explore</span>
+      </div>
+    </div>
+
+    <!-- RIGHT: Work previews -->
+    <div class="hero-right">
+      <div class="hero-right-label">Selected work</div>
+
+      <!-- Motto -->
+      <div class="hcard-motto">
+        <div class="hcard-live"><span class="hcard-live-dot"></span> Live Project</div>
+        <h3><em>Motto</em> — Career Platform</h3>
+        <p>Built 0→1: product design, landing page, GTM strategy, and LinkedIn growth.</p>
+        <div class="hcard-tags">
+          <span class="htag">GTM Strategy</span>
+          <span class="htag">Product Design</span>
+          <span class="htag">Netlify</span>
+          <span class="htag">Solo Founder</span>
+        </div>
+      </div>
+
+      <!-- Two smaller cards -->
+      <div class="hcards-row">
+        <div class="hcard-sm">
+          <div class="hcard-sm-icon">🛍️</div>
+          <h4>Merch Store Launch</h4>
+          <p>End-to-end campaign — vendor coordination, audience research, and launch.</p>
+        </div>
+        <div class="hcard-sm">
+          <div class="hcard-sm-icon">📊</div>
+          <h4>Email CTR +18%</h4>
+          <p>Segmentation redesign and engagement-driven A/B testing at ACROBiosystems.</p>
+        </div>
+      </div>
+
+      <!-- SEO card -->
+      <div class="hcard-sm" style="flex-direction:row;display:flex;align-items:center;gap:.85rem">
+        <div class="hcard-sm-icon" style="flex-shrink:0;margin-bottom:0">🔍</div>
+        <div>
+          <h4 style="margin-bottom:.15rem">SEO & Analytics</h4>
+          <p>GA4 + Search Console → content strategy → client budget recommendations (Solvenna).</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ ABOUT ═══════════════ -->
+<div class="rule"><div class="rule-dot"></div></div>
+<section id="about">
+  <div class="eyebrow">About Me</div>
+  <h2 class="section-h">Strategy-first. Execution-obsessed.</h2>
+  <p class="body" style="margin-bottom:.85rem">
+    Boston University MS in Media Science (STEM, GPA 3.73). I bridge the gap between
+    <strong>brand storytelling and performance data</strong> — equally comfortable writing a press release, 
+    reading a GA4 funnel report, or building a landing page from scratch.
+  </p>
+  <p class="body">
+    I've launched a merchandise store at Dassault Systèmes, improved email CTR by 18% at ACROBiosystems, 
+    generated 2M+ impressions for a pharma launch at HAVAS, and independently built <strong>Motto</strong> — 
+    a career platform — from market research to live product.
+  </p>
+
+  <div class="rule" style="margin:2rem 0 1.5rem"><div class="rule-dot"></div></div>
+  <div class="eyebrow">Core Competencies</div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
+      <h4>Marketing & GTM Strategy</h4>
+      <p>Campaign ownership, competitive research, brand positioning, go-to-market execution across B2B and consumer markets.</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon"><i class="fas fa-magnifying-glass"></i></div>
+      <h4>SEO & Analytics</h4>
+      <p>GA4, Google Search Console, on-page optimization, keyword research, turning data into content and budget decisions.</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon"><i class="fas fa-pen-nib"></i></div>
+      <h4>Content & Social</h4>
+      <p>Short-form video, LinkedIn campaigns, email segmentation, press releases — built on audience insight.</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon"><i class="fas fa-chart-pie"></i></div>
+      <h4>Consumer Research</h4>
+      <p>Customer behavior analysis, competitor benchmarking, brand messaging frameworks, cross-functional execution.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ MOTTO FEATURED ═══════════════ -->
+<div class="rule"><div class="rule-dot"></div></div>
+<section id="featured">
+  <div class="eyebrow">Featured Project</div>
+  <div class="motto-card">
+    <div class="mbadge"><span class="mbadge-dot"></span> Live · Apr 2026</div>
+    <h3><span>Motto</span> — Career Platform</h3>
+    <p>A low-barrier platform for new grads and career-switchers to transform blank job-hunting periods into verified experience. Conceived, designed, built, and launched independently from 0 to 1.</p>
+    <div class="motto-pills">
+      <span class="mpill">Market Research</span>
+      <span class="mpill">Product Positioning</span>
+      <span class="mpill">Landing Page Build</span>
+      <span class="mpill">Analytics Setup</span>
+      <span class="mpill">GTM Strategy</span>
+      <span class="mpill">LinkedIn Growth</span>
+      <span class="mpill">Netlify</span>
+    </div>
+    <div class="motto-actions">
+      <a href="https://halomotto.netlify.app/" target="_blank" class="m-cta">
+        <i class="fas fa-arrow-up-right-from-square" style="font-size:10px"></i> Visit Motto
+      </a>
+      <a href="#casestudies" class="m-ghost">See all case studies</a>
+    </div>
+    <div class="motto-stats">
+      <div class="ms"><span class="ms-l">Role</span><span class="ms-v">Solo Founder</span></div>
+      <div class="ms"><span class="ms-l">Stack</span><span class="ms-v">HTML/CSS + Netlify</span></div>
+      <div class="ms"><span class="ms-l">Focus</span><span class="ms-v">GTM + Growth</span></div>
+      <div class="ms"><span class="ms-l">Status</span><span class="ms-v">Live ✦</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CASE STUDIES ═══════════════ -->
+<div class="rule"><div class="rule-dot"></div></div>
+<section id="casestudies">
+  <div class="eyebrow">Case Studies</div>
+  <h2 class="section-h">Work in depth.</h2>
+  <div class="cs-grid">
+    <a href="blog-single.html" class="cs-card">
+      <div class="cs-thumb" style="padding:0;overflow:hidden"><img src="images/Case study e commerce.jpg" style="width:100%;height:140px;object-fit:cover;display:block"></div>
+      <div class="cs-body"><span class="cs-tag">Strategy</span><div class="cs-title">Merchandising Strategy for a Passionate Community</div><div class="cs-date">Q3, 2025 · Dassault Systèmes</div></div>
+    </a>
+    <a href="blog-single-2.html" class="cs-card">
+      <div class="cs-thumb" style="padding:0;overflow:hidden"><img src="images/Email metrics.jpg" style="width:100%;height:140px;object-fit:cover;display:block"></div>
+      <div class="cs-body"><span class="cs-tag">Research</span><div class="cs-title">Improving Email Marketing Performance</div><div class="cs-date">Q2, 2025 · Dassault Systèmes</div></div>
+    </a>
+    <a href="blog-single-3.html" class="cs-card">
+      <div class="cs-thumb" style="padding:0;overflow:hidden"><img src="images/Solution Partner Program.png" style="width:100%;height:140px;object-fit:cover;display:block"></div>
+      <div class="cs-body"><span class="cs-tag">Content</span><div class="cs-title">Solution Partner Program Relaunch</div><div class="cs-date">Q2, 2025 · Dassault Systèmes</div></div>
+    </a>
+    <a href="blog-single-4.html" class="cs-card">
+      <div class="cs-thumb" style="padding:0;overflow:hidden"><img src="images/Storytelling.jpg" style="width:100%;height:140px;object-fit:cover;display:block"></div>
+      <div class="cs-body"><span class="cs-tag">Strategy</span><div class="cs-title">Behind the Design: Customer Storytelling Series</div><div class="cs-date">Q4, 2024 · Dassault Systèmes</div></div>
+    </a>
+    <a href="blog-single-5.html" class="cs-card">
+      <div class="cs-thumb" style="padding:0;overflow:hidden"><img src="images/Tablet.jpg" style="width:100%;height:140px;object-fit:cover;display:block"></div>
+      <div class="cs-body"><span class="cs-tag">Launch</span><div class="cs-title">Anytime, Anywhere: Introducing the New Solution</div><div class="cs-date">Q4, 2024 · Dassault Systèmes</div></div>
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════════ PORTFOLIO ═══════════════ -->
+<div class="rule"><div class="rule-dot"></div></div>
+<section id="portfolio">
+  <div class="eyebrow">Portfolio</div>
+  <h2 class="section-h">Selected work.</h2>
+  <div class="port-grid">
+    <div class="port-item"><div class="port-thumb" style="padding:0"><img src="images/Work Sample - LinkedIn 2.png" style="width:100%;height:100%;object-fit:cover"></div><div class="port-ov"><span class="port-lb">LinkedIn Content</span></div></div>
+    <div class="port-item"><div class="port-thumb" style="padding:0"><img src="images/Work Sample Lunch & Learn Program.png" style="width:100%;height:100%;object-fit:cover"></div><div class="port-ov"><span class="port-lb">Lunch & Learn</span></div></div>
+    <div class="port-item"><div class="port-thumb" style="padding:0"><img src="images/Booth Backdrop Work Sample.png" style="width:100%;height:100%;object-fit:cover"></div><div class="port-ov"><span class="port-lb">Booth Backdrop</span></div></div>
+    <div class="port-item"><div class="port-thumb" style="padding:0"><img src="images/LinkedIn Graphic Sample.jpg" style="width:100%;height:100%;object-fit:cover"></div><div class="port-ov"><span class="port-lb">LinkedIn Graphic</span></div></div>
+    <div class="port-item"><div class="port-thumb" style="padding:0"><img src="images/Mystic.png" style="width:100%;height:100%;object-fit:cover"></div><div class="port-ov"><span class="port-lb">Mystic</span></div></div>
+    <div class="port-item"><div class="port-thumb" style="padding:0"><img src="images/Fruit.png" style="width:100%;height:100%;object-fit:cover"></div><div class="port-ov"><span class="port-lb">Fruit Design</span></div></div>
+  </div>
+</section>
+
+<!-- ═══════════════ RESUME ═══════════════ -->
+<div class="rule"><div class="rule-dot"></div></div>
+<section id="resume">
+  <div class="eyebrow">Resume</div>
+  <h2 class="section-h">Experience.</h2>
+  <div class="tl">
+    <div class="ti">
+      <div class="ti-meta">Sep 2025 – Jan 2026 · Solvenna · Chicago, IL</div>
+      <div class="ti-role">SEO Specialist</div>
+      <ul class="ti-bul">
+        <li>Managed website optimization for a large consumer-facing website serving the Florida market, improving client's organic search presence.</li>
+        <li>Analyzed GA4 and Google Search Console data to understand customer search behavior and page performance — then translated insights into content recommendations.</li>
+        <li>Presented performance decks to clients, using traffic data to shift marketing budgets and align product copy with customer search habits.</li>
+      </ul>
+    </div>
+    <div class="ti">
+      <div class="ti-meta">Aug 2024 – Aug 2025 · Dassault Systèmes · Waltham, MA</div>
+      <div class="ti-role">Marketing Strategist</div>
+      <ul class="ti-bul">
+        <li>Led the launch of an online merchandise store — coordinating vendor communication, inventory setup, project timelines, and launch execution.</li>
+        <li>Conducted customer research and competitor analysis to improve product messaging before launch.</li>
+        <li>Created and edited short-form social content for SOLIDWORKS Edu Instagram, averaging 2,000+ engagements per post.</li>
+        <li>Collaborated with external agency to refine keyword performance and page content for 12 SOLIDWORKS landing pages.</li>
+      </ul>
+    </div>
+    <div class="ti">
+      <div class="ti-meta">Sep 2023 – Dec 2023 · ACROBiosystems · Boston, MA</div>
+      <div class="ti-role">Marketing Intern</div>
+      <ul class="ti-bul">
+        <li>Created LinkedIn content for events and campaigns, contributing to 25% follower growth in three months.</li>
+        <li>Improved email audience segmentation based on engagement data, increasing click-through rate by 18%.</li>
+        <li>Supported planning and execution of industry trade shows, including booth setup and lead follow-up.</li>
+      </ul>
+    </div>
+    <div class="ti">
+      <div class="ti-meta">Jun 2022 – Aug 2022 · HAVAS Group China · Shanghai</div>
+      <div class="ti-role">Public Relations Intern</div>
+      <ul class="ti-bul">
+        <li>Drafted press releases and news scripts for a pharmaceutical product launch, generating 2M+ campaign impressions.</li>
+        <li>Researched customer behavior and market trends, turning findings into RFP presentation decks for clients.</li>
+      </ul>
+    </div>
+    <div class="ti">
+      <div class="ti-meta">Apr 2022 – Jun 2022 · KEPLER Communications · Beijing</div>
+      <div class="ti-role">Public Relations Intern</div>
+      <ul class="ti-bul">
+        <li>Supported launch of a luxury retail store by coordinating digital campaign materials and media placements.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="rule" style="margin:2rem 0"><div class="rule-dot"></div></div>
+  <div class="eyebrow">Projects</div>
+  <div class="tl" style="margin-top:1.1rem">
+    <div class="ti">
+      <div class="ti-meta">Apr 2026 – Present · <a href="https://halomotto.netlify.app/" target="_blank" style="color:var(--accent)">halomotto.netlify.app</a></div>
+      <div class="ti-role">Motto — Product Owner & Marketing Strategist</div>
+      <ul class="ti-bul">
+        <li>Identified a market opportunity through competitive research and conversations with students and early-career professionals — then defined platform positioning and target audience.</li>
+        <li>Planned overall brand direction, messaging, and user journey before product development began.</li>
+        <li>Built the landing page independently using Netlify, including page structure, copywriting, analytics implementation, and conversion tracking.</li>
+        <li>Designed the GTM strategy, focusing on LinkedIn and community channels to build early awareness.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="rule" style="margin:2rem 0"><div class="rule-dot"></div></div>
+  <div class="eyebrow">Education</div>
+  <div class="tl" style="margin-top:1.1rem">
+    <div class="ti">
+      <div class="ti-meta">2022 – 2024 · Boston University</div>
+      <div class="ti-role">MS, Communication — Media Science (STEM) · GPA 3.73</div>
+    </div>
+    <div class="ti">
+      <div class="ti-meta">2018 – 2022 · Ohio State University</div>
+      <div class="ti-role">BA, Communications · GPA 3.75</div>
+    </div>
+  </div>
+
+  <div class="rule" style="margin:2rem 0"><div class="rule-dot"></div></div>
+  <div class="eyebrow">Skills & Tools</div>
+  <div class="tool-cloud">
+    <span class="tp">Branding / Brand Strategy</span>
+    <span class="tp">Go-to-Market Strategy</span>
+    <span class="tp">Consumer Research</span>
+    <span class="tp">Competitive Analysis</span>
+    <span class="tp">Campaign Coordination</span>
+    <span class="tp">Google Analytics (GA4)</span>
+    <span class="tp">Google Search Console</span>
+    <span class="tp">A/B Testing</span>
+    <span class="tp">Excel / Sheets</span>
+    <span class="tp">HubSpot</span>
+    <span class="tp">Salesforce</span>
+    <span class="tp">Adobe Creative Suite</span>
+    <span class="tp">Magento</span>
+    <span class="tp">Netlify</span>
+  </div>
+</section>
+
+</div></div><!-- col / content -->
+
+<!-- RIGHT SIDEBAR -->
+<aside class="sidebar">
+  <div class="sb-inner">
+    <div class="avatar"><img src="images/Profilepic.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+    <div class="sb-name">Kexin (Abby) Xu</div>
+    <div class="sb-role">Marketing Strategist<br>SEO · GTM · Brand</div>
+    <div class="sb-btns">
+      <a href="#" class="b-solid"><i class="fas fa-download" style="font-size:10px"></i> Download Resume</a>
+      <a href="https://www.linkedin.com/in/kexiuxu/" target="_blank" class="b-ghost"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+      <a href="mailto:kexinxu0901@gmail.com" class="b-ghost" style="font-size:11px">kexinxu0901@gmail.com</a>
+    </div>
+    <p class="copyright">© Kexin Xu 2025</p>
+  </div>
+</aside>
+
+</div><!-- shell -->
+<script>
+  const links = document.querySelectorAll('.rail a');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => {
+          l.classList.remove('active');
+          if (l.getAttribute('href') === '#' + e.target.id) l.classList.add('active');
+        });
+      }
+    });
+  }, { rootMargin: '-30% 0px -65% 0px' });
+  document.querySelectorAll('section[id]').forEach(s => io.observe(s));
+</script>
+</body>
+</html>

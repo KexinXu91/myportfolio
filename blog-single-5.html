@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study — Anytime, Anywhere: xDesign Launch</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+  <style>
+:root{
+  --pg:#EBF3FF; --card:#FFFFFF; --navy:#0C1A2E; --ink:#1E2D42; --muted:#5A7087;
+  --accent:#1A8FD1; --glow:#38BDF8; --tint:#D6ECFF; --rule:rgba(26,143,209,.14);
+  --r-sm:10px; --r-md:16px; --r-lg:22px; --r-xl:32px;
+  --sh:0 2px 16px rgba(12,26,46,.06),0 1px 4px rgba(12,26,46,.04);
+  --sh-h:0 10px 36px rgba(12,26,46,.11),0 2px 8px rgba(12,26,46,.05);
+  --t:all .28s cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--pg);color:var(--ink);-webkit-font-smoothing:antialiased;min-height:100vh}
+a{color:inherit;text-decoration:none;transition:var(--t)}
+ul{list-style:none}
+
+/* PAGE WRAPPER */
+.cs-page{
+  max-width:780px;
+  margin:0 auto;
+  padding:3rem 2rem 6rem;
+}
+
+/* BACK LINK */
+.back-link{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:2.5rem;
+  padding:.5rem .9rem;
+  background:var(--card);border:1px solid var(--tint);border-radius:var(--r-xl);
+  box-shadow:var(--sh);transition:var(--t);
+}
+.back-link:hover{border-color:var(--glow);background:var(--tint);color:var(--accent)}
+.back-link i{font-size:11px}
+
+/* EYEBROW */
+.eyebrow{
+  font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.6rem;
+}
+
+/* TITLE */
+.cs-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,4vw,3rem);font-weight:400;
+  color:var(--navy);letter-spacing:-.02em;line-height:1.1;
+  margin-bottom:.75rem;
+}
+
+/* META ROW */
+.cs-meta{
+  display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;
+  font-size:12px;color:var(--muted);margin-bottom:2rem;
+}
+.cs-meta-tag{
+  padding:2px 10px;background:var(--tint);border-radius:var(--r-xl);
+  font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);
+}
+
+/* DIVIDER */
+.rule{display:flex;align-items:center;gap:10px;margin:2.25rem 0 2rem}
+.rule::before{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--rule))}
+.rule::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--rule),transparent)}
+.rule-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;
+  box-shadow:0 0 0 4px rgba(26,143,209,.15),0 0 10px rgba(56,189,248,.35)}
+
+/* MEDIA */
+.cs-media{
+  border-radius:var(--r-lg);overflow:hidden;
+  border:1px solid var(--rule);background:var(--card);
+  margin-bottom:2.25rem;box-shadow:var(--sh);
+}
+.cs-media img{width:100%;height:auto;display:block}
+.cs-media .swiper{width:100%}
+.cs-media .swiper img{width:100%;height:340px;object-fit:cover;display:block}
+.swiper-button-next,.swiper-button-prev{color:var(--accent)!important}
+.swiper-pagination-bullet-active{background:var(--accent)!important}
+
+/* INSTAGRAM EMBEDS */
+.ig-swiper-wrap{
+  border-radius:var(--r-lg);overflow:hidden;
+  border:1px solid var(--rule);background:var(--card);
+  margin-bottom:2.25rem;box-shadow:var(--sh);
+  max-width:480px;
+}
+.ig-swiper-wrap .swiper{padding-bottom:40px}
+
+/* CONTENT SECTIONS */
+.cs-section{margin-bottom:1.75rem}
+.cs-section-label{
+  font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.85rem;
+  display:flex;align-items:center;gap:.5rem;
+}
+.cs-section-label::after{content:'';flex:1;height:1px;background:var(--rule)}
+.cs-body{font-size:14.5px;line-height:1.82;color:var(--muted)}
+.cs-body strong{color:var(--ink);font-weight:600}
+
+/* BULLETS */
+.cs-bullets{padding-left:0;margin-top:.5rem}
+.cs-bullets li{
+  position:relative;padding-left:1.1rem;
+  font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:.5rem;
+}
+.cs-bullets li::before{content:'▸';position:absolute;left:0;color:var(--glow);font-size:10px;top:4px}
+
+/* RESULT HIGHLIGHT */
+.cs-result{
+  background:var(--card);border:1px solid var(--rule);
+  border-left:3px solid var(--accent);
+  border-radius:0 var(--r-md) var(--r-md) 0;
+  padding:1.1rem 1.4rem;margin-top:.5rem;
+  font-size:14px;line-height:1.72;color:var(--ink);
+}
+.cs-result strong{color:var(--navy);font-weight:600}
+
+@media(max-width:640px){
+  .cs-page{padding:2rem 1.1rem 5rem}
+  .cs-title{font-size:2rem}
+  .cs-media .swiper img{height:220px}
+}
+  </style>
+</head>
+<body>
+<div class="cs-page">
+  <a href="index.html#casestudies" class="back-link">
+    <i class="fas fa-arrow-left"></i> Back to Case Studies
+  </a>
+
+  <div class="eyebrow">Launch · Q4, 2024 · Dassault Systèmes</div>
+  <h1 class="cs-title">Anytime, Anywhere: Introducing the New Solution</h1>
+
+  <div class="ig-swiper-wrap">
+  <div class="swiper ig-swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" style="display:flex;justify-content:center;padding:1rem">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DA_Ee0Tu-C-/" data-instgrm-version="14" style="width:100%;max-width:380px;min-width:280px;margin:0 auto;"></blockquote>
+      </div>
+      <div class="swiper-slide" style="display:flex;justify-content:center;padding:1rem">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DA81YSYOYXB/" data-instgrm-version="14" style="width:100%;max-width:380px;min-width:280px;margin:0 auto;"></blockquote>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</div>
+<script async src="//www.instagram.com/embed.js"></script>
+
+  <div class="rule"><div class="rule-dot"></div></div>
+
+  <div class="cs-section">
+    <div class="cs-section-label">Overview</div>
+    <p class="cs-body">A short-form video promotion series for SOLIDWORKS xDesign — targeting the EDU student community on Instagram to drive product awareness and boost sales.</p>
+  </div>
+
+  <div class="cs-section">
+    <div class="cs-section-label">Objectives</div>
+    <ul class="cs-bullets">
+      <li>Create a series of videos to promote SOLIDWORKS xDesign to the EDU audience.</li>
+      <li>Boost awareness and sales of SOLIDWORKS xDesign.</li>
+      <li>Engage with the student and educator community on Instagram.</li>
+    </ul>
+  </div>
+
+  <div class="cs-section">
+    <div class="cs-section-label">Approach</div>
+    <ul class="cs-bullets">
+      <li>Drafted video scripts based on product features, benefits, and student use cases.</li>
+      <li>Shot and edited the short-form videos for Instagram.</li>
+      <li>Published posts and monitored engagement to optimize content cadence.</li>
+    </ul>
+  </div>
+
+  <div class="cs-section">
+    <div class="cs-section-label">Results</div>
+      <div class="cs-result"><strong>✦</strong> 5,000+ likes received across the Instagram video series.</div>
+      <div class="cs-result"><strong>✦</strong> Product sales surpassed the Q3 2024 target.</div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script>
+var igSwiper = new Swiper('.ig-swiper',{slidesPerView:1,spaceBetween:0,loop:false,pagination:{el:'.swiper-pagination',clickable:true},navigation:{nextEl:'.swiper-button-next',prevEl:'.swiper-button-prev'}});
+igSwiper.on('slideChange',function(){if(window.instgrm){window.instgrm.Embeds.process();}});
+if(window.instgrm){window.instgrm.Embeds.process();}
+</script>
+</div>
+</body>
+</html>
